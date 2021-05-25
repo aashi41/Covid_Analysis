@@ -7,8 +7,8 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import pickle
 import pandas as pd
 #import matplotlib.pyplot as plt 
-from . import covid_info
-#import covid_info
+#from . import covid_info
+import covid_info
 
 
 cols = covid_info.cols
@@ -118,7 +118,8 @@ def ploy_predict():
     poly = PolynomialFeatures(degree=3)
     poly_future_forcast = poly.fit_transform(future_forcast)
     #model = pickle.load(open('linear_model.pkl','rb'))
-    model = pickle.load(open('D:\\My_study_for_data_science\\python\\covid_detection\\covid_detection\\covid_detection\\flask_app\\main\\linear_model.pkl','rb'))
+    path = covid_info.get_dir_path('linear_model.pkl')
+    model = pickle.load(open(path,'rb'))
     linear_pred = model.predict(poly_future_forcast)
     linear_pred = linear_pred.reshape(1,-1)[0]
     linear_df = pd.DataFrame({'Date': future_forcast_dates[-10:], 'Polynomial Predicted No. of Confirmed Cases Worldwide': np.round(linear_pred[-10:])})
@@ -127,8 +128,4 @@ def ploy_predict():
     predicted_list = [linear_df.columns.values.tolist()] + linear_df.values.tolist()
     print(predicted_list)
     return predicted_list
-
-    
-
-ploy_predict()
 
