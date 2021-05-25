@@ -1,12 +1,12 @@
 from covid import Covid
 import os,sys
 import pandas as pd 
-import matplotlib.pyplot as plt 
-import matplotlib.colors as mcolors
+#import matplotlib.pyplot as plt 
+#import matplotlib.colors as mcolors
 import plotly.express as px
 import plotly.io as pio
 import plotly.graph_objects as go
-plt.style.use('fivethirtyeight')
+#plt.style.use('fivethirtyeight')
 #%matplotlib inline
 
 covid = Covid()
