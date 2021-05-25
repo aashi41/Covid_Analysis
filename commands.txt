@@ -1,0 +1,15 @@
+------------------------------------------------------------------------------------------------------------------------
+Application dependencies
+------------------------------------------------------------------------------------------------------------------------
+
+To create virtual environment
+    https://www.c-sharpcorner.com/article/steps-to-set-up-a-virtual-environment-for-python-development/
+
+To install requirements file
+    pip install -r requirements.txt
+
+To install flask
+    pip install Flask
+
+To create requirements file
+    pip freeze > requirements.txt

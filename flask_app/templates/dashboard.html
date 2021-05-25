@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 class='font_color'>Dashboard</h1>
+    <div class="row">
+    <div class="col-md-12">
+        <object data="{{ url_for('static', filename=global_covid_html) }}"  width="900" height="500"></object>
+        <!-- <a href="{{ url_for('static', filename=global_covid_html) }}">Click me</a> -->
+    </div>
+     <!--<iframe src="file:///D:/My_study_for_data_science/python/covid_final/covid_final/covid_final/flask_app/templates/Global_covid.html" title="Global corona"></iframe> -->
+    <p class='font_color'>Analysis</p>
+    </div>
+{% endblock content %}

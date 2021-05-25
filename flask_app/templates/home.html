@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Statistics table-->
+    <div class="container">
+        <table id="t01">
+          <tr>
+              {% for headers in table_headers %}
+                <th>{{ headers }}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              {% for rows in table_rows %}
+                <td>{{ rows }}</td>
+              {% endfor %}
+          </tr>
+        </table>
+    </div>
+    <br>
+
+<!--Radio button-->
+    <h2 style="color:white">Covid analysis</h2>
+    <form action="{{ url_for('main.home') }}" method="get">
+        <p style="color:white">Please select pie chart or bar chart to display</p>
+
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="radio"
+            id="inlineRadio1"
+            value="0"
+          />
+          <label class="form-check-label" for="inlineRadio1" style="color:white">Pie chart</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="radio"
+            id="inlineRadio2"
+            value="1"
+          />
+          <label class="form-check-label" for="inlineRadio2" style="color:white">Bar chart</label>
+        </div>
+
+      <input class="btn btn-primary" type="submit">
+    </form>
+    <br>
+
+
+<!--Inline images-->
+    <div class="row">
+      <div class="col-md-4">
+        <!--<img src="{{ url_for('static', filename=images[0]) }}" alt="image1" width="370" height="300">-->
+        <object data="{{ url_for('static', filename=images[0]) }}" width="380" height="400"></object>
+      </div>
+      <div class="col-md-4">
+        <!--<img src="{{ url_for('static', filename=images[1]) }}" alt="image1" width="370" height="300">-->
+        <object data="{{ url_for('static', filename=images[1]) }}" width="380" height="400"></object>
+      </div>
+      <div class="col-md-4">
+        <!--<img src="{{ url_for('static', filename=images[2]) }}" alt="image1" width="370" height="300">-->
+        <object data="{{ url_for('static', filename=images[2]) }}" width="380" height="400"></object>
+      </div>
+    </div>
+
+<!--Country dropdown-->
+    <br>
+    <div id="aDiv">
+    <form action="{{ url_for('main.home') }}" class="col-md-4" method="get">
+      <label for="country" style="color:white">Choose any country to display data from</label>
+        <br>
+      <select class="custom-select" name="country" id="country">
+          {% for country in countries %}
+            {% if country.lower() == "india" %}
+                <option value="{{ country }}" selected>{{ country }}</option>
+            {% else %}
+                <option value="{{ country }}">{{ country }}</option>
+            {% endif %}
+          {% endfor %}
+      </select>
+      
+      <input class="btn btn-primary mt-2" type="submit" value="Submit">
+    </form>
+  </div>
+
+<!--Country wise image-->
+    <br>
+    <div class="container">
+    <div style='float:left' >
+        <!--<img src="{{ url_for('static', filename=countrywise_image) }}" class="img-rounded" alt="Cinque Terre" width="700" height="400"> -->      
+        <object data="{{ url_for('static', filename=countrywise_image) }}" width="750" height="500"></object>
+      </div>
+      <div style='float:right'>
+      <div>
+        <table class="table-hover table-dark">
+          {% for key, value in country_data.items() %}
+          <tr>
+            <th> {{ key.capitalize() }} </th>
+            <td> {{ value }} </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+      <div style="padding: 20px;">  
+        <h5 style="color:white;text-align: center">mortality_rate: {{ mortality_rate }} %</h5>
+        <h5 style="color:white;text-align: center">recovery_rate: {{ recovery_rate }} %</h5>
+      </div>
+    </div>
+    </div>
+    <br>
+
+{% endblock content %}
+

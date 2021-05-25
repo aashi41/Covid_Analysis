@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 class="font_color">Corona cases prediction for next 10 days</h1>
+    
+    <div class="container">
+        <table class="table table-striped w-auto" id="t01">
+          {% for value in model_prediction %}
+          {% if model_prediction.index(value) == 0 %}
+          <tr>
+            <th> {{ value[0] }} </th>
+            <th> {{ value[1] }} </th>
+          </tr>
+            {% else %}
+            <tr>
+                <td> {{ value[0] }} </td>
+                <td> {{ value[1] }} </td>
+            </tr>
+            {% endif %}
+          {% endfor %}
+        </table>
+      </div> 
+
+
+
+{% endblock content %}
