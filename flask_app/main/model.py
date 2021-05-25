@@ -7,8 +7,8 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import pickle
 import pandas as pd
 #import matplotlib.pyplot as plt 
-#from . import covid_info
-import covid_info
+from . import covid_info
+#import covid_info
 
 
 cols = covid_info.cols
